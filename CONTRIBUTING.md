@@ -6,7 +6,7 @@ Thanks for your interest in improving the UX Audit Skill. It's a single Markdown
 
 - **New named checks**: add a stable ID + description to the Named Recurring Checks table in `SKILL.md`. The bar: it's a recurring, screenshot-visible issue that doesn't already map cleanly to an existing check.
 - **Framework refinements**: tighten a citation, fix a heuristic number, or clarify how a principle is applied.
-- **Domain modules**: a named set of checks for a vertical (fintech, healthcare, e-commerce, accessibility-first, etc.), kept separate so the core stays universal.
+- **Vertical check packs**: a named set of checks for a specific domain (fintech, healthcare, e-commerce, accessibility-first, etc.), kept separate from the universal core.
 - **Annotation improvements**: the HTML fallback, multi-page handling, or better label placement in `scripts/annotate.py`.
 
 ## Principles to preserve
