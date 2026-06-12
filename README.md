@@ -15,10 +15,12 @@
 </p>
 
 <p align="center">
-  <img src="examples/assets/signup-annotated.png" width="300" alt="Annotated example audit" />
+  <img src="examples/assets/signup-annotated.png" width="270" alt="Annotated sign-up screen" />
+  &nbsp;&nbsp;
+  <img src="examples/assets/verify-email-annotated.png" width="270" alt="Annotated verify-email screen" />
 </p>
 <p align="center">
-  <sub>Example output: a sign-up screen audited and annotated by severity (red = critical, orange = major, amber = minor, green = positive).</sub>
+  <sub>Example output: a two-screen journey audited and annotated by severity (red = critical, orange = major, amber = minor, green = positive).</sub>
 </p>
 
 <p align="center">
@@ -145,7 +147,7 @@ Ask in plain language, or run `/ux-audit` in Claude Code. Point it at a folder o
 ```
 You: /ux-audit ./screenshots
 
-Agent: I see 3 screenshots. Before I start, two things:
+Agent: I see 2 screenshots (sign-up, verify email). Before I start, two things:
        What's the product, and what is the user trying to do in this flow?
 
 You: A SaaS app — a first-time visitor signing up for the free trial.
@@ -155,24 +157,24 @@ Agent: Got it. Platform — mobile web? And should I run the full framework
 
 You: Mobile web, full sweep.
 
-Agent: Done. 0 critical, 2 major, 2 minor.
+Agent: Done. 0 critical, 3 major, 4 minor.
        Report + annotated screens saved to ./ux-audit-2026-01-15-saas-signup/
 
        Top 3 fixes:
        1. Field labels are placeholder-only — they vanish on typing (WCAG 3.3.2)
        2. Password helper text fails contrast — the one rule users need is invisible (WCAG 1.4.3)
-       3. Marketing consent is pre-ticked — dark pattern + likely GDPR issue
+       3. The verify screen dead-ends — no resend / change-email / help if the link never arrives
 
-       Want me to open issues for the two majors?
+       Want me to open issues for the three majors?
 ```
 
 ### See a full example
 
-A complete worked example lives in [`examples/`](examples/):
+A complete worked example — a two-screen journey (sign-up → verify email) — lives in [`examples/`](examples/):
 
-- [`examples/report.md`](examples/report.md) — the full audit report
-- [`examples/assets/signup-annotated.png`](examples/assets/signup-annotated.png) — the annotated screen
-- [`examples/make-example-mockup.py`](examples/make-example-mockup.py) — regenerates the example screen, so you can reproduce the whole thing
+- [`examples/report.md`](examples/report.md) — the full audit report, including cross-screen findings
+- [`examples/assets/`](examples/assets/) — both annotated screens
+- [`examples/make-example-mockup.py`](examples/make-example-mockup.py) — regenerates both screens, so you can reproduce the whole thing
 
 ---
 
