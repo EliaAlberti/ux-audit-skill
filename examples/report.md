@@ -2,7 +2,7 @@
 type: ux-audit
 date: 2026-01-15
 product: Lumen (fictional SaaS)
-journey: Sign-up — create an account and verify email
+journey: Sign-up, create an account and verify email
 platform: mobile-web
 screens: 2
 findings-critical: 0
@@ -11,7 +11,7 @@ findings-minor: 4
 findings-cosmetic: 0
 ---
 
-# UX Audit — Lumen: Sign-up & Verify
+# UX Audit, Lumen: Sign-up & Verify
 
 > This is an **illustrative example** produced by the `ux-audit` skill against two
 > deliberately-flawed mockups ([`assets/signup.png`](assets/signup.png) and
@@ -20,7 +20,7 @@ findings-cosmetic: 0
 
 ## Executive Summary
 
-This two-step sign-up gets the fundamentals right — few fields, a single column, a clear path for returning users, and a calm confirmation screen — but seven issues undercut the one job of the flow: getting a first-time visitor signed up and verified. On the form, field labels exist only as placeholder text that vanishes on typing (F-01) and the sole password rule is rendered at a contrast ratio that is effectively invisible (F-02). The journey then **ends on a dead end** (F-03): the verify screen offers no way to resend, change the address, or get help if the email never arrives — a weak final note that, by the Peak–End Rule, is what users will remember. Top three fixes: add persistent visible labels, fix the helper-text contrast, and give the verify screen real recovery options.
+This two-step sign-up gets the fundamentals right, few fields, a single column, a clear path for returning users, and a calm confirmation screen, but seven issues undercut the one job of the flow: getting a first-time visitor signed up and verified. On the form, field labels exist only as placeholder text that vanishes on typing (F-01) and the sole password rule is rendered at a contrast ratio that is effectively invisible (F-02). The journey then **ends on a dead end** (F-03): the verify screen offers no way to resend, change the address, or get help if the email never arrives, a weak final note that, by the Peak-End Rule, is what users will remember. Top three fixes: add persistent visible labels, fix the helper-text contrast, and give the verify screen real recovery options.
 
 ## Scope & Method
 
@@ -50,7 +50,7 @@ This two-step sign-up gets the fundamentals right — few fields, a single colum
 
 ## Screen-by-Screen
 
-### Step 1 — Sign-up form (`signup.png`)
+### Step 1: Sign-up form (`signup.png`)
 
 ![annotated](assets/signup-annotated.png)
 
@@ -62,7 +62,7 @@ This two-step sign-up gets the fundamentals right — few fields, a single colum
 
 #### [S3] F-02 · Password requirement is effectively invisible
 - **Check:** CONTRAST-FAIL · **Heuristics:** WCAG 1.4.3 (Contrast AA), Nielsen #5 (error prevention)
-- **Evidence:** "Must be 8+ characters" sits beneath the password field in a very light grey on white — visibly far below the 4.5:1 AA threshold (verify with a contrast checker).
+- **Evidence:** "Must be 8+ characters" sits beneath the password field in a very light grey on white, visibly far below the 4.5:1 AA threshold (verify with a contrast checker).
 - **Impact on goal:** This is the only guidance that helps users avoid a password rejection. If they can't read it, they fail validation and bounce off the step that matters most.
 - **Recommendation:** Raise the helper text to at least 4.5:1 (e.g. #6B7280 on white). Consider showing the rule inline as the user types. · **Effort:** S
 
@@ -78,14 +78,14 @@ This two-step sign-up gets the fundamentals right — few fields, a single colum
 - **Impact on goal:** Erodes trust at the first interaction, and pre-ticked marketing consent is non-compliant under GDPR/PECR, which require a freely-given, affirmative opt-in. Flag for legal as well as UX.
 - **Recommendation:** Ship the box unticked. · **Effort:** S
 
-### Step 2 — Check your email (`verify-email.png`)
+### Step 2: Check your email (`verify-email.png`)
 
 ![annotated](assets/verify-email-annotated.png)
 
 #### [S3] F-03 · The journey ends on a dead end
 - **Check:** DEAD-END · **Heuristics:** Nielsen #3 (user control & freedom), Nielsen #9 (help users recover), Tognazzini (explorable interfaces)
 - **Evidence:** The only action is "Open email app". There is no "Resend email", no "Change email address", and no link to support anywhere on the screen.
-- **Impact on goal:** Email verification fails often in the real world — typos, spam filtering, delays. When it does, this screen offers the user nothing. They cannot recover the goal without abandoning and starting over, which is exactly where sign-up funnels haemorrhage users.
+- **Impact on goal:** Email verification fails often in the real world, typos, spam filtering, delays. When it does, this screen offers the user nothing. They cannot recover the goal without abandoning and starting over, which is exactly where sign-up funnels haemorrhage users.
 - **Recommendation:** Add "Resend email" (with a short cooldown), "Change email address", and a help link. Consider showing a success state once verification is detected. · **Effort:** M
 
 #### [S2] F-06 · The screen never says where it sent the link
@@ -102,20 +102,20 @@ This two-step sign-up gets the fundamentals right — few fields, a single colum
 
 ## Journey-Level Findings
 
-- **Consistency is half-kept (F-07).** The brand mark is identical on both screens (see P-03), which is good — but the *primary button* is filled on step 1 and outline on step 2. When the obvious things stay constant and the important one drifts, the drift is more jarring, not less (Nielsen #4, WCAG 3.2.4).
-- **The ending is the weakest moment (F-03).** By the **Peak–End Rule**, users disproportionately remember a journey's emotional low point and its ending. Here they are the same screen: the flow ends on an unrecoverable dead end. Fixing F-03 isn't just usability, it's what the user walks away feeling.
+- **Consistency is half-kept (F-07).** The brand mark is identical on both screens (see P-03), which is good, but the *primary button* is filled on step 1 and outline on step 2. When the obvious things stay constant and the important one drifts, the drift is more jarring, not less (Nielsen #4, WCAG 3.2.4).
+- **The ending is the weakest moment (F-03).** By the **Peak-End Rule**, users disproportionately remember a journey's emotional low point and its ending. Here they are the same screen: the flow ends on an unrecoverable dead end. Fixing F-03 isn't just usability, it's what the user walks away feeling.
 - **Fogg B=MAP on "verify your email":** the prompt is present ("Open email app"), but if the email doesn't arrive, **Ability** collapses to zero (no recovery) and **Motivation** with it. The verify step is where this funnel will leak most.
 
 ## What Works (keep)
 
-- **[P-01] Clear path for existing users** — "Already have an account? Sign in" is present and legible, so returning users aren't trapped on the wrong screen (Jakob's Law, Nielsen #6).
-- **[P-02] Minimal field count** — only email and password are requested, keeping Hick's-Law load and form friction low.
-- **[P-03] Consistent brand mark** — the Lumen logo is identical across both screens, anchoring the user in the same product (Nielsen #4). The contrast with F-07 shows consistency is achievable here; it just needs to extend to the button.
+- **[P-01] Clear path for existing users**: "Already have an account? Sign in" is present and legible, so returning users aren't trapped on the wrong screen (Jakob's Law, Nielsen #6).
+- **[P-02] Minimal field count**: only email and password are requested, keeping Hick's-Law load and form friction low.
+- **[P-03] Consistent brand mark**: the Lumen logo is identical across both screens, anchoring the user in the same product (Nielsen #4). The contrast with F-07 shows consistency is achievable here; it just needs to extend to the button.
 
 ## Prioritised Recommendations
 
 1. **Quick wins (sev 3, effort S):** persistent labels (F-01); fix helper-text contrast (F-02)
-2. **Planned (sev 3, effort M):** real recovery options on the verify screen — resend, change email, help (F-03)
+2. **Planned (sev 3, effort M):** real recovery options on the verify screen, resend, change email, help (F-03)
 3. **Quick wins (sev 2, effort S):** untick consent (F-05); dominant primary CTA (F-04); echo the masked email (F-06); one primary-button style across screens (F-07)
 
 ## Framework Coverage
@@ -123,7 +123,7 @@ This two-step sign-up gets the fundamentals right — few fields, a single colum
 | Framework | Findings |
 |-----------|----------|
 | Nielsen | F-01, F-03, F-04, F-05, F-06, F-07 |
-| Hick / Fitts / Miller / Jakob / Peak–End | F-04 / — / — / P-01 / journey ends on a dead end (F-03) |
+| Hick / Fitts / Miller / Jakob / Peak-End | F-04 / none / none / P-01 / journey ends on a dead end (F-03) |
 | Fogg B=MAP | Ability collapse at the verify step (F-03) |
 | Cialdini | F-05 (consent by default); no positive trust signals present |
 | Gerhardt-Powals | F-06 (reduce uncertainty) |

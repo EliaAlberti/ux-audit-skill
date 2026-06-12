@@ -4,14 +4,14 @@ Thanks for your interest in improving the UX Audit Skill. It's a single Markdown
 
 ## Good first contributions
 
-- **New named checks** — add a stable ID + description to the Named Recurring Checks table in `SKILL.md`. The bar: it's a recurring, screenshot-visible issue that doesn't already map cleanly to an existing check.
-- **Framework refinements** — tighten a citation, fix a heuristic number, or clarify how a principle is applied.
-- **Domain modules** — a named set of checks for a vertical (fintech, healthcare, e-commerce, accessibility-first, etc.), kept separate so the core stays universal.
-- **Annotation improvements** — the HTML fallback, multi-page handling, or better label placement in `scripts/annotate.py`.
+- **New named checks**: add a stable ID + description to the Named Recurring Checks table in `SKILL.md`. The bar: it's a recurring, screenshot-visible issue that doesn't already map cleanly to an existing check.
+- **Framework refinements**: tighten a citation, fix a heuristic number, or clarify how a principle is applied.
+- **Domain modules**: a named set of checks for a vertical (fintech, healthcare, e-commerce, accessibility-first, etc.), kept separate so the core stays universal.
+- **Annotation improvements**: the HTML fallback, multi-page handling, or better label placement in `scripts/annotate.py`.
 
 ## Principles to preserve
 
-These are what make the output trustworthy — please don't regress them:
+These are what make the output trustworthy, please don't regress them:
 
 1. **Every finding cites a named heuristic.** No generic feedback.
 2. **Evidence rules are non-negotiable.** No claims about anything not visible in a screenshot; interaction-only qualities go in "not assessable".
@@ -29,7 +29,7 @@ These are what make the output trustworthy — please don't regress them:
 ## Style
 
 - British English in prose.
-- Keep `SKILL.md` skimmable — tables and short lines over long paragraphs.
+- Keep `SKILL.md` skimmable, tables and short lines over long paragraphs.
 - Match the existing citation format (`Nielsen #5`, `WCAG 1.4.3`, `Hick's Law`).
 
 PRs and issues both welcome. For larger changes, open an issue first to discuss direction.

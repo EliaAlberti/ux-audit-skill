@@ -39,8 +39,8 @@
 
 You give the skill screenshots of a flow and one line about what the user is trying to do. It returns:
 
-- **Severity-rated findings** on Nielsen's 0–4 scale, anchored to the user's actual goal
-- **Heuristic citations** on every finding — "Nielsen #5", "WCAG 1.4.3", "Hick's Law" — never generic "make it pop" feedback
+- **Severity-rated findings** on Nielsen's 0 to 4 scale, anchored to the user's actual goal
+- **Heuristic citations** on every finding ("Nielsen #5", "WCAG 1.4.3", "Hick's Law"), never generic "make it pop" feedback
 - **Annotated screenshots** with numbered, colour-coded markers
 - **Recommended fixes** with effort estimates (S/M/L)
 - **A structured Markdown report** with an executive summary, screen-by-screen findings, journey-level analysis, and what already works
@@ -53,7 +53,7 @@ It's a heuristic evaluation, the kind a senior designer does, run by an agent th
 
 A skill is a folder with a `SKILL.md` file. The agent reads it and follows the instructions when a task matches. No plugin, no code to wire up. This one bundles a small Python script for the annotation step.
 
-The same skill folder works in both tools — they read skills from different directories:
+The same skill folder works in both tools. They read skills from different directories:
 
 | Tool | Skills folder |
 |------|---------------|
@@ -78,7 +78,7 @@ Most AI design feedback is bad for predictable reasons. This skill is built to a
 
 The core idea: **the quality of the feedback depends on what you evaluate against.** Generic "review this design" prompts produce generic output. Evaluating a journey against established heuristic frameworks, with citations, produces the kind of review you'd pay a consultant for.
 
-Under the hood it runs four passes over your screens: a **goal walk** (where does the journey break for the stated user), a **framework sweep** (all 16 below), a **named-checks** pass (stable IDs so audits are comparable over time), and a **journey-level** pass (cross-screen consistency, memory load, Peak–End, and a Fogg behaviour-model read of the key conversion action).
+Under the hood it runs four passes over your screens: a **goal walk** (where does the journey break for the stated user), a **framework sweep** (all 16 below), a **named-checks** pass (stable IDs so audits are comparable over time), and a **journey-level** pass (cross-screen consistency, memory load, Peak-End, and a Fogg behaviour-model read of the key conversion action).
 
 ---
 
@@ -89,7 +89,7 @@ Findings are graded against 16 canonical frameworks, grouped by what they catch:
 | Category | Frameworks |
 |----------|-----------|
 | **Classic usability** | Nielsen's 10 Heuristics · Shneiderman's 8 Golden Rules · Gerhardt-Powals' Cognitive Principles · Bastien & Scapin's Ergonomic Criteria |
-| **Behavioural psychology** | Hick's Law · Fitts's Law · Miller's Law · Jakob's Law · Peak–End Rule |
+| **Behavioural psychology** | Hick's Law · Fitts's Law · Miller's Law · Jakob's Law · Peak-End Rule |
 | **Trust & persuasion** | Fogg Behaviour Model (B=MAP) · Cialdini's Principles of Influence |
 | **Interaction design** | Gestalt Principles · Norman's Design Principles · Tognazzini's First Principles |
 | **Accessibility** | WCAG 2.1 (the subset checkable from a static image) |
@@ -150,9 +150,9 @@ You: /ux-audit ./screenshots
 Agent: I see 2 screenshots (sign-up, verify email). Before I start, two things:
        What's the product, and what is the user trying to do in this flow?
 
-You: A SaaS app — a first-time visitor signing up for the free trial.
+You: A SaaS app, a first-time visitor signing up for the free trial.
 
-Agent: Got it. Platform — mobile web? And should I run the full framework
+Agent: Got it. Platform, mobile web? And should I run the full framework
        sweep or focus on specific concerns?
 
 You: Mobile web, full sweep.
@@ -161,34 +161,34 @@ Agent: Done. 0 critical, 3 major, 4 minor.
        Report + annotated screens saved to ./ux-audit-2026-01-15-saas-signup/
 
        Top 3 fixes:
-       1. Field labels are placeholder-only — they vanish on typing (WCAG 3.3.2)
-       2. Password helper text fails contrast — the one rule users need is invisible (WCAG 1.4.3)
-       3. The verify screen dead-ends — no resend / change-email / help if the link never arrives
+       1. Field labels are placeholder-only, so they vanish on typing (WCAG 3.3.2)
+       2. Password helper text fails contrast, the one rule users need is invisible (WCAG 1.4.3)
+       3. The verify screen dead-ends, no resend / change-email / help if the link never arrives
 
        Want me to open issues for the three majors?
 ```
 
 ### See a full example
 
-A complete worked example — a two-screen journey (sign-up → verify email) — lives in [`examples/`](examples/):
+A complete worked example, a two-screen journey (sign-up → verify email), lives in [`examples/`](examples/):
 
-- [`examples/report.md`](examples/report.md) — the full audit report, including cross-screen findings
-- [`examples/assets/`](examples/assets/) — both annotated screens
-- [`examples/make-example-mockup.py`](examples/make-example-mockup.py) — regenerates both screens, so you can reproduce the whole thing
+- [`examples/report.md`](examples/report.md), the full audit report, including cross-screen findings
+- [`examples/assets/`](examples/assets/), both annotated screens
+- [`examples/make-example-mockup.py`](examples/make-example-mockup.py), regenerates both screens, so you can reproduce the whole thing
 
 ---
 
 ## How Severity Works
 
-Findings are rated on Nielsen's 0–4 scale, weighted by **impact on the stated goal × how many users hit it × how often.** Anchoring to the goal is why the skill asks what the user is trying to do before it starts.
+Findings are rated on Nielsen's 0 to 4 scale, weighted by **impact on the stated goal × how many users hit it × how often.** Anchoring to the goal is why the skill asks what the user is trying to do before it starts.
 
 | Rating | Label | Meaning |
 |:------:|-------|---------|
-| 🔴 **4** | Critical | Blocks the goal, causes loss/harm, or legal/regulatory exposure — fix before release |
+| 🔴 **4** | Critical | Blocks the goal, causes loss/harm, or legal/regulatory exposure; fix before release |
 | 🟠 **3** | Major | Significant friction; many users struggle, some abandon |
 | 🟡 **2** | Minor | Noticeable; users recover quickly |
-| 🔵 **1** | Cosmetic | Polish — fix when convenient |
-| 🟢 **✓** | Positive | Works well — keep and replicate |
+| 🔵 **1** | Cosmetic | Polish; fix when convenient |
+| 🟢 **✓** | Positive | Works well; keep and replicate |
 
 Annotated screenshots use the same colour scale.
 
@@ -196,7 +196,7 @@ Annotated screenshots use the same colour scale.
 
 ## What It Can't See
 
-Honest limits. A static screenshot can't show behaviour, so the skill **never guesses** at it — these are listed in every report under "not assessable" rather than invented:
+Honest limits. A static screenshot can't show behaviour, so the skill **never guesses** at it, these are listed in every report under "not assessable" rather than invented:
 
 - Focus order and focus visibility
 - Keyboard navigation and screen-reader semantics
@@ -220,7 +220,7 @@ Yes. It's a single `SKILL.md` skill in the open Agent Skills format. Install it 
 <details>
 <summary><strong>How many screenshots should I give it?</strong></summary>
 
-Anywhere from one screen to a full journey. More screens let it catch cross-screen issues (inconsistency, memory load, Peak–End), which single screens can't show. For very long flows (10+ screens) it batches by journey segment.
+Anywhere from one screen to a full journey. More screens let it catch cross-screen issues (inconsistency, memory load, Peak-End), which single screens can't show. For very long flows (10+ screens) it batches by journey segment.
 
 </details>
 
@@ -234,7 +234,7 @@ Only for the annotation step (drawing boxes on your screenshots), which uses Pil
 <details>
 <summary><strong>Won't it just hallucinate problems?</strong></summary>
 
-That's the failure mode this skill is designed around. Its evidence rules require every finding to point at something visible in a named screenshot, forbid stating inferred behaviour as fact, and force interaction-only qualities into a "not assessable" list. A framework that surfaces nothing gets no findings — it won't pad the count.
+That's the failure mode this skill is designed around. Its evidence rules require every finding to point at something visible in a named screenshot, forbid stating inferred behaviour as fact, and force interaction-only qualities into a "not assessable" list. A framework that surfaces nothing gets no findings, it won't pad the count.
 
 </details>
 
@@ -255,7 +255,7 @@ The Named Recurring Checks table in `SKILL.md` gives each common issue a stable 
 <details>
 <summary><strong>Can I add my own domain checks?</strong></summary>
 
-Yes. `SKILL.md` is just Markdown — add a section of domain-specific checks (fintech, healthcare, e-commerce, etc.) and they'll be applied alongside the frameworks. Keep them as named checks so findings stay comparable.
+Yes. `SKILL.md` is just Markdown, add a section of domain-specific checks (fintech, healthcare, e-commerce, etc.) and they'll be applied alongside the frameworks. Keep them as named checks so findings stay comparable.
 
 </details>
 
@@ -263,7 +263,7 @@ Yes. `SKILL.md` is just Markdown — add a section of domain-specific checks (fi
 
 ## Contributing
 
-Issues and PRs welcome — especially new named checks, framework refinements, and the annotation fallback. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Issues and PRs welcome, especially new named checks, framework refinements, and the annotation fallback. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ---
 

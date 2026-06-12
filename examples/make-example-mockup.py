@@ -2,7 +2,7 @@
 """Generate the neutral example screens used in the README and example report.
 
 A deliberately-flawed two-step journey for a fictional product ("Lumen"), so the
-example audit has real, visible issues to cite — including cross-screen ones.
+example audit has real, visible issues to cite, including cross-screen ones.
 Run:  python3 make-example-mockup.py
 Output: assets/signup.png, assets/verify-email.png
 """
@@ -44,7 +44,7 @@ def new_card():
     img = Image.new("RGB", (W, H), "#F4F5F7")
     d = ImageDraw.Draw(img)
     d.rounded_rectangle([40, 80, 710, 960], radius=32, fill="white")
-    # Brand mark (identical on both screens — consistency)
+    # Brand mark (identical on both screens: consistency)
     d.ellipse([349, 150, 401, 202], fill=PURPLE)
     centre(d, 375, 222, "Lumen", font(34, bold=True), INK)
     return img, d
@@ -56,7 +56,7 @@ def build_signup():
     centre(d, 375, 296, "Create your account", font(40, bold=True), INK)
     centre(d, 375, 356, "Start your 14-day free trial", font(24), GREY)
 
-    # Inputs (placeholder-as-label — no visible labels above)
+    # Inputs (placeholder-as-label: no visible labels above)
     d.rounded_rectangle([90, 440, 660, 510], radius=14, outline=BORDER, width=2)
     d.text((112, 462), "Email", font=font(26), fill=PLACEHOLDER)
     d.rounded_rectangle([90, 540, 660, 610], radius=14, outline=BORDER, width=2)
@@ -99,15 +99,15 @@ def build_verify():
 
     centre(d, 375, 410, "Check your email", font(40, bold=True), INK)
 
-    # Body — never names the address the link was sent to
+    # Body: never names the address the link was sent to
     centre(d, 375, 470, "We've sent a verification link to", font(24), GREY)
     centre(d, 375, 502, "your inbox. Open it to continue.", font(24), GREY)
 
-    # Primary action — restyled vs screen 1 (filled there, outline here = pattern drift)
+    # Primary action: restyled vs screen 1 (filled there, outline here = pattern drift)
     d.rounded_rectangle([195, 580, 555, 650], radius=14, outline=PURPLE, width=3, fill="white")
     centre(d, 375, 601, "Open email app", font(24, bold=True), PURPLE)
 
-    # (Deliberately: no resend, no change-email, no help — the empty region below)
+    # (Deliberately: no resend, no change-email, no help: the empty region below)
 
     img.save(os.path.join(ASSETS, "verify-email.png"))
     print(os.path.join(ASSETS, "verify-email.png"))
